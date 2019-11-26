@@ -7,7 +7,7 @@ public class SalleId implements Serializable {
 	private String nom;
 	private Integer capacite;
 
-	public SalleId() {
+	public SalleId(String nom, Integer capacity) {
 		super();
 	}
 
