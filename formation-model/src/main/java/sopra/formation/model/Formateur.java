@@ -10,9 +10,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("trainer")
 public class Formateur extends Personne {
+	@JsonView(Views.ViewCommon.class)
 	private int experience;
 	@OneToMany(mappedBy = "referent")
 	private List<Filiere> filieres = new ArrayList<Filiere>();
