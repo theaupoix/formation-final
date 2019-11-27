@@ -41,4 +41,9 @@ public class Views {
 
 	public static class ViewFiliereDetail extends ViewFiliere {
 	}
+	public static class ViewMatiere extends ViewCommon {
+	}
+
+	public static class ViewMatiereDetail extends ViewMatiere {
+	}
 }
