@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import sopra.formation.model.Filiere;
 import sopra.formation.model.Matiere;
 import sopra.formation.model.MatiereId;
+import sopra.formation.model.NiveauMatiere;
 
 public interface IMatiereRepository extends JpaRepository<Matiere, MatiereId> {
 	@Query("select distinct m.matiere from Module m join m.filiere f where f = :filiere")
