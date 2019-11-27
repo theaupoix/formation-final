@@ -10,7 +10,7 @@ import sopra.formation.model.Formateur;
 import sopra.formation.model.Personne;
 import sopra.formation.model.Stagiaire;
 
-public interface IPersonneRepository extends JpaRepository<Personne, Long> {
+public interface IPersonneRepository extends JpaRepository<Personne, Long>, IPersonneCustomRepository {
 	@Query("from Stagiaire")
 	List<Stagiaire> findAllStagiaire();
 
@@ -22,4 +22,6 @@ public interface IPersonneRepository extends JpaRepository<Personne, Long> {
 	
 	@Query("select distinct s from Stagiaire s left join fetch s.filiere f where s.id = :id")
 	Stagiaire findWithFiliere(@Param("id") Long id);
+	
+	
 }
