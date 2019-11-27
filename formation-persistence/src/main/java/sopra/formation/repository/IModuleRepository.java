@@ -11,7 +11,7 @@ import sopra.formation.model.Stagiaire;
 
 public interface IModuleRepository extends JpaRepository<Module, Integer> {
 	
-	@Query("select m from Module m left join m.formateur f where f.id = :id")
+	@Query("select m from Module m left join fetch m.formateur f where f.id = :id")
 	List<Module> findByFormateur(@Param("id") Long id);
 	
 }

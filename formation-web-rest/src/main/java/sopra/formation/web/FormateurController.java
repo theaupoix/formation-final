@@ -16,9 +16,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.formation.model.Filiere;
 import sopra.formation.model.Formateur;
+import sopra.formation.model.Matiere;
 import sopra.formation.model.Module;
 import sopra.formation.model.Stagiaire;
 import sopra.formation.model.Views;
+import sopra.formation.repository.IFiliereRepository;
+import sopra.formation.repository.IMatiereRepository;
 import sopra.formation.repository.IModuleRepository;
 import sopra.formation.repository.IPersonneRepository;
 
@@ -30,6 +33,12 @@ public class FormateurController {
 	
 	@Autowired
 	private IModuleRepository moduleRepo;
+	
+	@Autowired
+	private IFiliereRepository filliereRepo;
+	
+	@Autowired
+	private IMatiereRepository matiereRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewFormateur.class)
@@ -47,20 +56,28 @@ public class FormateurController {
 	}
 	
 	@GetMapping("/{id}/module")
-	@JsonView(Views.ViewModule.class)
+	@JsonView(Views.ViewModuleFromFormateur.class)
 	public List<Module> findModule(@PathVariable Long id) {
 		List<Module> modules = moduleRepo.findByFormateur(id);
 
 		return modules;
 	}
 	
-//	@GetMapping("/{id}/filiere")
-//	@JsonView(Views.ViewFiliere.class)
-//	public List<Filiere> findFiliere(@PathVariable Long id) {
-//		Formateur formateur = (Formateur) personneRepo.findWithFiliere(id);
-//
-//		return formateur.getFilieres()();
-//	}
+	@GetMapping("/{id}/filiere")
+	@JsonView(Views.ViewFilliereFromFormateur.class)
+	public List<Filiere> findFiliere(@PathVariable Long id) {
+		List<Filiere> fillieres = filliereRepo.findByFormateur(id);
+
+		return fillieres;
+	}
+	
+	@GetMapping("/{id}/matiere")
+	@JsonView(Views.ViewMatiereFromFormateur.class)
+	public List<Matiere> findMatiere(@PathVariable Long id) {
+		List<Matiere> matieres = matiereRepo.findAllByFormateur(id);
+
+		return matieres;
+	}
 
 	@PostMapping("")
 	@JsonView(Views.ViewFormateur.class)

@@ -21,7 +21,16 @@ public class Views {
 
 	public static class ViewModule extends ViewCommon {
 	}
-
+	
+	public static class ViewModuleFromFormateur extends ViewCommon {
+	}
+	
+	public static class ViewFilliereFromFormateur extends ViewCommon {
+	}
+	
+	public static class ViewMatiereFromFormateur extends ViewCommon {
+	}
+	
 	public static class ViewModuleDetail extends ViewModule {
 
 	}
@@ -39,6 +48,4 @@ public class Views {
 	public static class ViewFiliere extends ViewCommon {
 	}
 
-	public static class ViewFiliereDetail extends ViewFiliere {
-	}
 }
