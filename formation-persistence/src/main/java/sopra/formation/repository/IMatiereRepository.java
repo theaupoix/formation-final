@@ -15,7 +15,11 @@ public interface IMatiereRepository extends JpaRepository<Matiere, MatiereId> {
 	@Query("select distinct m.matiere from Module m join m.filiere f where f = :filiere")
 	List<Matiere> findAllByFiliere(@Param("filiere") Filiere filiere);
 
+
 	@Query("select m from Matiere m  left join fetch m.formateurs f where f.id = :id")
 	List<Matiere> findAllByFormateur(@Param("id") Long id);
+
+	@Query("select distinct m from Matiere m left join fetch m.formateurs f where m.id = :id")
+	Matiere findWithFormateur(@Param("id") MatiereId id);
 
 }
