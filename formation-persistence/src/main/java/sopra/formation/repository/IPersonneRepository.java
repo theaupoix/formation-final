@@ -22,4 +22,6 @@ public interface IPersonneRepository extends JpaRepository<Personne, Long>, IPer
 	
 	@Query("select distinct s from Stagiaire s left join fetch s.filiere f where s.id = :id")
 	Stagiaire findWithFiliere(@Param("id") Long id);
+	
+	
 }
