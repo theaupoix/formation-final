@@ -34,24 +34,26 @@ public class Views {
 	public static class ViewModuleDetail extends ViewModule {
 
 	}
-	
-	public static class ViewFiliereDetail extends ViewFiliere{
-	}
-	
-	public static class ViewSalle extends ViewCommon{
-	}
-	
-	public static class ViewSalleDetails extends ViewSalle{
-	}
-
 
 	public static class ViewFiliere extends ViewCommon {
 	}
 
-	
+	public static class ViewFiliereDetail extends ViewFiliere {
+	}
+
 	public static class ViewMatiere extends ViewCommon {
 	}
 
 	public static class ViewMatiereDetail extends ViewMatiere {
+	}
+
+	public static class ViewSalle extends ViewCommon {
+	}
+
+	public static class ViewSalleDetails extends ViewSalle {
+	}
+
+	public static class ViewModuleFromMatiere extends ViewCommon {
+
 	}
 }
