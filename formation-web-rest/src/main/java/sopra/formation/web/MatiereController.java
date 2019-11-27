@@ -16,9 +16,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.formation.model.Matiere;
 import sopra.formation.model.MatiereId;
+import sopra.formation.model.Module;
 import sopra.formation.model.NiveauMatiere;
 import sopra.formation.model.Views;
 import sopra.formation.repository.IMatiereRepository;
+import sopra.formation.repository.IModuleRepository;
 
 
 @RestController
@@ -26,7 +28,10 @@ import sopra.formation.repository.IMatiereRepository;
 public class MatiereController {
 	@Autowired
 	private IMatiereRepository matiereRepo;
-
+	
+	@Autowired
+	private IModuleRepository moduleRepo;
+	
 	@GetMapping("")
 	@JsonView(Views.ViewMatiere.class)
 	public List<Matiere> list() {
@@ -41,6 +46,14 @@ public class MatiereController {
 		MatiereId id = new MatiereId(nom, niveau);
 		Matiere matiere = matiereRepo.findById(id).get();
 		return matiere;
+	}
+	
+	@GetMapping("/{nom}:{niveau}/module")
+	@JsonView(Views.ViewModuleFromMatiere.class)
+	public List<Module> findModule(@PathVariable String nom, @PathVariable NiveauMatiere niveau){
+		MatiereId id = new MatiereId(nom, niveau);
+		List<Module> modules = moduleRepo.findByMatiere(id);
+		return modules;
 	}
 	
 	@GetMapping("/detail/{nom}:{niveau}")

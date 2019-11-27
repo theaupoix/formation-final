@@ -38,7 +38,7 @@ public class Module {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumns({ @JoinColumn(name = "subject_name", referencedColumnName = "name"),
 			@JoinColumn(name = "subject_level", referencedColumnName = "level") })
-	@JsonView(Views.ViewModule.class)
+	@JsonView(Views.ViewModuleFromMatiere.class)
 	private Matiere matiere;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumns({ @JoinColumn(name = "classroom_name", referencedColumnName = "name"),

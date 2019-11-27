@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopra.formation.model.Filiere;
 import sopra.formation.model.Views;
 import sopra.formation.repository.IFiliereRepository;
-import sopra.formation.repository.IPersonneRepository;
 
 @RestController
 @RequestMapping("/filiere")
